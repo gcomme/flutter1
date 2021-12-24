@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
 
       home: Scaffold(
         appBar: AppBar(
-          title: Text('myWakeel'),
+          title: Text('myDogeee'),
         ),
         body: Column(
           children: [
