@@ -42,8 +42,7 @@ class _MyAppState extends State<MyApp> {
           'Green ',
           'White'
         ],
-      }
-
+      },
       {
         'questionText': 'I hate your dog',
         'answers': [
@@ -53,9 +52,6 @@ class _MyAppState extends State<MyApp> {
           '435345'
         ],
       }
-      
-
-
     ];
     return MaterialApp(
       // home: Text('ddddd'),
@@ -70,11 +66,9 @@ class _MyAppState extends State<MyApp> {
               questions[_questionIndex]['questionText'],
               //style: TextStyle(fontSize: 30),
             ),
-           ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
-return Answser(_answerQuestion, answer);
-
+            ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+              return Answer(_answerQuestion, answer);
             }).toList(),
-           
           ],
         ),
       ),
