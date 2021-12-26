@@ -70,9 +70,11 @@ class _MyAppState extends State<MyApp> {
               questions[_questionIndex]['questionText'],
               //style: TextStyle(fontSize: 30),
             ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+           ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+return Answser(_answerQuestion, answer);
+
+            }).toList(),
+           
           ],
         ),
       ),
