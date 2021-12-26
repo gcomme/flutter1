@@ -12,9 +12,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var questions = [
+    {
+      'questionText': 'What is your name ',
+      'answers': [
+        'Black',
+        'White'
+      ],
+    },
+    {
+      'questionText': 'I hate your dog',
+      'answers': [
+        '73824',
+        '12321',
+        '532432 ',
+        '435345'
+      ],
+    }
+  ];
+
   var _questionIndex = 0;
 
   _answerQuestion() {
+    if (_questionIndex < questions.length) {
+      print('No more questions i..f..');
+    }
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
@@ -33,24 +56,6 @@ class _MyAppState extends State<MyApp> {
     ];
 */
 
-    var questions = [
-      {
-        'questionText': 'What is your name ',
-        'answers': [
-          'Black',
-          'White'
-        ],
-      },
-      {
-        'questionText': 'I hate your dog',
-        'answers': [
-          '73824',
-          '12321',
-          '532432 ',
-          '435345'
-        ],
-      }
-    ];
     return MaterialApp(
       // home: Text('ddddd'),
 
@@ -58,17 +63,21 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('myDogeee'),
         ),
-        body: Column(
-          children: [
-            Question(
-              questions[_questionIndex]['questionText'].toString(),
-              //style: TextStyle(fontSize: 30),
-            ),
-            ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: [
+                  Question(
+                    questions[_questionIndex]['questionText'].toString(),
+                    //style: TextStyle(fontSize: 30),
+                  ),
+                  ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList(),
+                ],
+              )
+            : Center(
+                child: Text('you did it'),
+              ),
       ),
     );
   }
