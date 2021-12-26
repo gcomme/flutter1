@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: [
             Question(
-              questions[_questionIndex]['questionText'],
+              questions[_questionIndex]['questionText'].toString(),
               //style: TextStyle(fontSize: 30),
             ),
             ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
