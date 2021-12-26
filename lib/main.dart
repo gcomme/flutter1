@@ -38,8 +38,6 @@ class _MyAppState extends State<MyApp> {
         'questionText': 'What is your name ',
         'answers': [
           'Black',
-          'Red',
-          'Green ',
           'White'
         ],
       },
