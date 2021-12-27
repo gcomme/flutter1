@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questions = [
+  var _questions = [
     {
       'questionText': 'What is your name ',
       'answers': [
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
   _answerQuestion() {
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print('No more questions i..f..');
     }
 
@@ -63,21 +65,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('myDogeee'),
         ),
-        body: _questionIndex < questions.length
-            ? Column(
-                children: [
-                  Question(
-                    questions[_questionIndex]['questionText'].toString(),
-                    //style: TextStyle(fontSize: 30),
-                  ),
-                  ...(questions[_questionIndex]['answers'] as List<String>).map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList(),
-                ],
-              )
-            : Center(
-                child: Text('you did it'),
-              ),
+        body: _questionIndex < _questions.length ? Quiz(answerQuestion: _answerQuestion, questionIndex: _questionIndex, questions: _questions) : Result(),
       ),
     );
   }
